@@ -1,8 +1,11 @@
 # infra/postgresql/orm_client.py
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
-# 실제 DB 주소로 변경해주세요. (예: postgresql+asyncpg://user:pass@localhost:5432/dbname)
-SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://계정:비밀번호@주소:포트/DB이름"
+# # 실제 DB 주소로 변경해주세요. (예: postgresql+asyncpg://user:pass@localhost:5432/dbname)
+# SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://계정:비밀번호@주소:포트/DB이름"
+
+# 🌟 PostgreSQL 대신 SQLite 로컬 파일(test.db)을 생성해서 쓰겠다고 선언!
+SQLALCHEMY_DATABASE_URL = "sqlite+aiosqlite:///./test.db"
 
 # ORM 전용 엔진 (통신망)
 engine = create_async_engine(SQLALCHEMY_DATABASE_URL, echo=True)
